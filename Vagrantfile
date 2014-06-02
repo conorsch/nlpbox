@@ -29,17 +29,26 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   aptitude install -y build-essential python-dev swig git tcl tcl-dev
 
-  git clone https://github.com/desilinguist/swig-srilm /tmp/swig-srilm
+  export SWIGSRILM='/opt/swig-srilm'
+  git clone https://github.com/desilinguist/swig-srilm $SWIGSRILM
 
   export SRILM='/opt/srilm'
   export NO_TCL=X
   export TCL_INCLUDE=''
   export TCL_LIBRARY=''
 
+
   mkdir -p $SRILM
   tar -xz --directory $SRILM -f /vagrant/provisioning/srilm.tgz
 
   make -C $SRILM
+
+  perl -p -i -e 's#/home/speech/Resources/Tools/(srilm/lib/i686)-m64#/opt/$1#' $SWIGSRILM/Makefile
+  perl -p -i -e 's#/home/speech/Resources/Tools/(srilm/include)#/opt/$1#' $SWIGSRILM/Makefile
+  perl -p -i -e 's#/opt/python/2.7/include/python2.7#/usr/include/python2.7#' $SWIGSRILM/Makefile
+
+  make -C $SWIGSRILM python
+
 SCRIPT
 
     config.vm.provision "shell", inline: $setup_srilm
