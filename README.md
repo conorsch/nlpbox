@@ -30,7 +30,7 @@ You can log into the machine using:
 ```vagrant ssh```
 
 and use the installed packages in that environment. 
-Try importing the command in iPython:
+Try importing the package in [iPython]:
 
 ```
 $ ipython
@@ -48,3 +48,4 @@ srilm.getBigramProb    srilm.getIndexForWord  srilm.getTrigramProb   srilm.getWo
 [vagrant]:http://www.vagrantup.com/
 [VirtualBox]:http://www.virtualbox.org/
 [swig-srilm]:https://github.com/desilinguist/swig-srilm
+[iPython]:http://ipython.org/
