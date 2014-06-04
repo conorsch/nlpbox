@@ -1,3 +1,6 @@
-echo "SWIGSRILM='/opt/swig-srilm'" >> /etc/environment
-echo "SRILM='/opt/srilm'" >> /etc/environment
+echo <<ENVIRONMENT_VARIABLES
+SWIGSRILM='/opt/swig-srilm'
+SRILM='/opt/srilm'
+ENVIRONMENT_VARIABLES
+>> /etc/environment
 source /etc/environment
