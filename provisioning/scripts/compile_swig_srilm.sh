@@ -1,3 +1,4 @@
+source /etc/environment
 git clone https://github.com/desilinguist/swig-srilm $SWIGSRILM
 
 perl -p -i -e 's#/home/speech/Resources/Tools/(srilm/lib/i686)-m64#/opt/$1#' $SWIGSRILM/Makefile
