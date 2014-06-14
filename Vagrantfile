@@ -30,4 +30,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, :path => "provisioning/scripts/set_env_vars.sh"
   config.vm.provision :shell, :path => "provisioning/scripts/compile_srilm.sh"
   config.vm.provision :shell, :path => "provisioning/scripts/compile_swig_srilm.sh"
+  config.vm.provision :shell, :path => "provisioning/scripts/personalize_env.sh"
 end
