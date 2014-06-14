@@ -4,6 +4,6 @@ mkdir $gitdir
 aptitude install homesick
 gem install homesick
 
-cd $gitdir && git clone https://github.com/nojhan/liquidprompt.git
-homesick clone https://github.com/ronocdh/dotfiles.git
-homesick symlink --force dotfiles
+cd $gitdir && su vagrant -c 'git clone https://github.com/nojhan/liquidprompt.git'
+su vagrant -c 'homesick clone https://github.com/ronocdh/dotfiles.git'
+su vagrant -c 'homesick symlink --force dotfiles'
