@@ -1,4 +1,5 @@
 echo "Now compiling SRILM..."
+source /etc/environment
 export NO_TCL=X
 export TCL_INCLUDE=''
 export TCL_LIBRARY=''
