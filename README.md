@@ -23,15 +23,29 @@ Doing so will run the following automated processes:
   2. Install development packages for compiling projects from source.
   3. Compile and install the SRILM toolkit.
   4. Compile Python bindings for SRILM, using [swig-srilm].
+  5. Install the `srilm` Python package, so you can `import srilm` in your Python scripts.
 
 You can log into the machine using:
 
 ```vagrant ssh```
 
-and use the installed packages in that environment.
+and use the installed packages in that environment. 
+Try importing the package in [iPython]:
+
+```
+$ ipython
+
+In [1]: import srilm
+
+In [2]: srilm.<tab>
+srilm.corpusStats      srilm.getCorpusPpl     srilm.getSentencePpl   srilm.getUnigramProb   srilm.howManyNgrams    srilm.readLM
+srilm.deleteLM         srilm.getCorpusProb    srilm.getSentenceProb  srilm.getWordForIndex  srilm.initLM
+srilm.getBigramProb    srilm.getIndexForWord  srilm.getTrigramProb   srilm.getWordProb      srilm.numOOVs
+```
 
 [Madnani, 2009]:http://ojs.pythonpapers.org/index.php/tppsc/article/view/83
 [SRILM]:http://www.speech.sri.com/projects/srilm/download.html
 [vagrant]:http://www.vagrantup.com/
 [VirtualBox]:http://www.virtualbox.org/
 [swig-srilm]:https://github.com/desilinguist/swig-srilm
+[iPython]:http://ipython.org/
