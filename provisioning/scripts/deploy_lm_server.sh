@@ -1,13 +1,18 @@
-gitdir=/home/vagrant/gits
+gitdir="/home/vagrant/gits"
+serverDir="$gitdir/language-model-server"
 
-su vagrant
-mkdir -p $gitdir
+su vagrant -c "mkdir -p $gitdir"
+su vagrant -c "mkdir -p $serverDir/corpus"
+su vagrant -c "mkdir -p $serverDir/fixtures"
 
-cd $gitdir 
-git clone https://github.com/ronocdh/language-model-server.git
-serverDir=$gitdir/language-model-server
+rm -rf "$serverDir"
+cd "$gitdir"
+su vagrant -c "git clone https://github.com/ronocdh/language-model-server.git"
 
-pip install --user -U -r $serverDir/requirements.txt
+cd "$serverDir"
+su vagrant -c "git fetch"
+su vagrant -c "git checkout nltk-corpora"
 
-$serverDir/bootstrap.sh
-exit
+pip install -U -r "$serverDir/requirements.txt"
+
+su vagrant -c "$serverDir/bootstrap.sh"
