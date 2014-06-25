@@ -5,4 +5,4 @@ su vagrant -c "mkdir -p $serverDir/fixtures"
 
 cd "$serverDir"
 pip install -U -r "$serverDir/requirements.txt"
-su vagrant -c "./bootstrap.sh"
+su vagrant -l -c "$serverDir/bootstrap.sh"
