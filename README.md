@@ -24,6 +24,7 @@ Doing so will run the following automated processes:
   3. Compile and install the SRILM toolkit.
   4. Compile Python bindings for SRILM, using [swig-srilm].
   5. Install the `srilm` Python package, so you can `import srilm` in your Python scripts.
+  6. Deploy the Python web application [language-model-server] for querying ngrams.
 
 You can log into the machine using:
 
@@ -48,4 +49,5 @@ srilm.getBigramProb    srilm.getIndexForWord  srilm.getTrigramProb   srilm.getWo
 [vagrant]:http://www.vagrantup.com/
 [VirtualBox]:http://www.virtualbox.org/
 [swig-srilm]:https://github.com/desilinguist/swig-srilm
+[language-model-server]:https://github.com/ronocdh/language-model-server
 [iPython]:http://ipython.org/
