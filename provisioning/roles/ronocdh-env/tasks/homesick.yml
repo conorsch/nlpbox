@@ -1,0 +1,11 @@
+---
+- name: Install homesick Ruby gem.
+  gem: name=homesick state=present
+
+- name: Add dotfiles as Homesick castle.
+  command: homesick clone https://github.com/ronocdh/dotfiles
+  sudo: false
+
+- name: Deploy Homesick symlinks.
+  command: homesick symlink --force dotfiles
+  sudo: false

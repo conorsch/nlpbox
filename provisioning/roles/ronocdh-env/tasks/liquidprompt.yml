@@ -1,0 +1,5 @@
+---
+- name: Clone liquidprompt git repository.
+  git: repo=https://github.com/nojhan/liquidprompt/ dest=gits/liquidprompt
+  sudo: false
+
