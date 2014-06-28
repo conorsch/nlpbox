@@ -1,0 +1,16 @@
+---
+- name: Clone language-model-server git repository.
+  git: repo=https://github.com/ronocdh/language-model-server dest={{lmserver_dir}}
+  sudo: false
+
+- name: Ensure fixtures directories exist.
+  file: path={{lmserver_dir}}/{{item}} state=directory owner=vagrant group=vagrant mode=0755
+  with_items:
+    - fixtures
+    - corpus
+
+- name: Install Python package dependencies.
+  pip: requirements={{lmserver_dir}}/requirements.txt extra_args='--upgrade'
+
+- tags:
+    - packages

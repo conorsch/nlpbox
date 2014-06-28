@@ -23,7 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.name = "srilmbox"
   end
 
-  config.vm.synced_folder "../language-model-server", "/home/vagrant/gits/lmserver"
+#  config.vm.synced_folder "../language-model-server", "/home/vagrant/gits/lmserver"
 
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "provisioning/playbook.yml"
@@ -32,6 +32,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.verbose = "extra"
   end
 
-#  config.vm.provision :shell, :path => "provisioning/scripts/personalize_env.sh"
 #  config.vm.provision :shell, :path => "provisioning/scripts/deploy_lm_server.sh"
 end
