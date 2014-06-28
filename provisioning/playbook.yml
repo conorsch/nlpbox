@@ -5,7 +5,8 @@
     - name: generate locale
       command: locale-gen en_US.UTF-8
       sudo: yes
-
+  vars_files:
+    - [ "vars/srilm.yml" ]
   roles:
     - { role: srilm }
 
