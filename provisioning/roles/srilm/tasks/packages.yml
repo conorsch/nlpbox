@@ -1,7 +1,7 @@
 ---
 - name: SRILM | Packages | Install required system packages.
   apt: >
-    pkg=${item}
+    pkg={{item}}
     state=installed
     update-cache=yes
   with_items:

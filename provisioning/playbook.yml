@@ -1,6 +1,9 @@
 ---
 - hosts: srilmbox
 
+  roles:
+    - { role: srilm }
+
   tasks:
 
     - name: update apt cache
