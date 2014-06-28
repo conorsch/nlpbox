@@ -1,4 +1,5 @@
 ---
-- include: packages.yml
-- include: set_environment_variables.yml
-- include: compile.yml
+#- include: packages.yml
+#- include: set_environment_variables.yml
+#- include: compile.yml
+- include: swig.yml

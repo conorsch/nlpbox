@@ -1,0 +1,21 @@
+---
+- name: SWIG | Clone swig-srilm git repository.
+  git:
+    repo: https://github.com/desilinguist/swig-srilm 
+    dest: "{{swig_srilm}}"
+
+- name: SWIG | Update library directories in Makefile.
+  lineinfile: >
+    dest={{swig_srilm}}/Makefile
+    state=present
+    regexp='SRILM_LIBS=/home/speech/Resources/Tools/srilm/lib/i686-m64'
+    line="SRILM_LIBS={{srilm_path}}/lib/{{ansible_architecture}}"
+
+#perl -p -i -e 's#/home/speech/Resources/Tools/(srilm/include)#/opt/$1#' $SWIGSRILM/Makefile
+#perl -p -i -e 's#/opt/python/2.7/include/python2.7#/usr/include/python2.7#' $SWIGSRILM/Makefile
+##echo '%feature("autodoc");' >> $SWIGSRILM/srilm_python.i
+#
+#perl -p -i -e 's#/home/speech/Resources/Tools/(srilm/lib/i686)-m64#/opt/$1#' $SWIGSRILM/Makefile
+#perl -p -i -e 's#/home/speech/Resources/Tools/(srilm/include)#/opt/$1#' $SWIGSRILM/Makefile
+#perl -p -i -e 's#/opt/python/2.7/include/python2.7#/usr/include/python2.7#' $SWIGSRILM/Makefile
+##echo '%feature("autodoc");' >> $SWIGSRILM/srilm_python.i
