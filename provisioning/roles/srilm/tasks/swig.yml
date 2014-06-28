@@ -30,5 +30,8 @@
     line="PYTHON_INC=/usr/include/python2.7"
 
 - name: SWIG | Compile.
-  command: make -C {{swig_srilm}}
+  command: make -C {{swig_srilm}} python
+
+- name: SWIG | Install 'srilm' Python module.
+  command: cp {{swig_srilm}}/_srilm.so {{swig_srilm}}/srilm.py /usr/lib/python2.7
 
