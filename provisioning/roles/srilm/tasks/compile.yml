@@ -6,7 +6,11 @@
   command: tar -xz --directory {{ srilm_path }} -f /vagrant/provisioning/srilm.tgz
 
 - name: SRILM | Compilation | Update PATH in Makefile.
-  command: perl -p -i -e 's!^#\s+(SRILM = )/home/speech/stolcke/project/srilm/devel\E!$1/opt/srilm!' {{ srilm_path }}/Makefile
+  lineinfile: >
+    dest={{srilm_path}}/Makefile
+    state=present
+    regexp='^#\s+(SRILM = )/home/speech/stolcke/project/srilm/devel'
+    line="SRILM={{srilm_path}}"
 
 - name: SRILM | Compilation | Compile.
   command: make -C {{ srilm_path }}
@@ -14,3 +18,4 @@
     NO_TCL: 'X'
     TCL_INCLUDE: ''
     TCL_LIBRARY: ''
+
