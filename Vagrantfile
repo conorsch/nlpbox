@@ -29,9 +29,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.playbook = "provisioning/playbook.yml"
     ansible.sudo = true
     ansible.inventory_path = "provisioning/ansible_hosts"
+    ansible.verbose = "extra"
   end
 
-#  config.vm.provision :shell, :path => "provisioning/scripts/compile_srilm.sh"
 #  config.vm.provision :shell, :path => "provisioning/scripts/compile_swig_srilm.sh"
 #  config.vm.provision :shell, :path => "provisioning/scripts/personalize_env.sh"
 #  config.vm.provision :shell, :path => "provisioning/scripts/deploy_lm_server.sh"
