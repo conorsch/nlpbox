@@ -8,9 +8,8 @@
     state=present
     line="{{item}}"
   with_items:
-    - "SRILM='/opt/srilm'"
-    - "SWIGSRILM='/opt/swig-srilm'"
-    - "NLTK_DATA='/home/vagrant/.nltk_data'"
+    - SRILM='{{srilm_dir}}'
+    - SWIGSRILM='{{ swig_srilm }}'
 
   tags:
     - env
