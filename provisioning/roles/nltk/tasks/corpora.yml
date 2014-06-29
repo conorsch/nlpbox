@@ -1,5 +1,5 @@
 ---
 - name: Download all corpora.
-  command: python -m nltk.downloader -d /usr/share/nltk_data all
+  command: python -m nltk.downloader -d {{ nltk_data }}
   tags:
     - packages
