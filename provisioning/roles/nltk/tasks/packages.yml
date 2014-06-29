@@ -9,7 +9,7 @@
     - build-essential
     - python-pip
     - python-dev
-    - yaml-dev
+    - libyaml-dev
   tags:
     - packages
 
