@@ -3,3 +3,8 @@
   command: python -m nltk.downloader -d {{ nltk_data }}
   tags:
     - packages
+
+- name: Download punkt tokenizer.
+  command: python -m nltk.downloader -d "punkt"
+  tags:
+    - packages
