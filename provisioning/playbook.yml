@@ -10,7 +10,8 @@
       sudo: yes
 
   vars_files:
-    - [ "vars/srilm.yml", "vars/nltk.yml" ]
+    - vars/srilm.yml
+    - vars/nltk.yml
 
   roles:
     - { role: nltk }
