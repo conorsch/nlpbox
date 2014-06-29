@@ -1,4 +1,10 @@
 ---
+- name: Ensure nltk_data directory exists.
+  file: path={{ nltk_data }} state=directory mode=755
+
+# Unfortunately the nltk.downloader script doesn't run unattended,
+# so right now these tasks are failing. There should be a flag
+# to make it run unattended, otherwise write a custom script.
 - name: Download all corpora.
   command: python -m nltk.downloader -d {{ nltk_data }}
   tags:
