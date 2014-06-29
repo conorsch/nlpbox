@@ -1,9 +1,9 @@
 ---
 - name: Bootstrap lmserver database.
-  command: "{{lmserver_dir}}/bootstrap.sh"
+  command: bash {{lmserver_dir}}/bootstrap.sh
   sudo: false
 
-- tags:
-    database
-    bootstrap
+  tags:
+    - database
+    - bootstrap
 

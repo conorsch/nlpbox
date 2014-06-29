@@ -1,6 +1,25 @@
 ---
+- name: Install package dependencies.
+  apt: >
+    pkg={{item}}
+    state=installed
+    update-cache=true
+  with_items:
+    - git
+    - build-essential
+    - python-pip
+    - python-dev
+  tags:
+    - packages
+
+- name: Ensure "gits" dir exists.
+  command: mkdir -p {{git_directory}}
+  sudo: false
+   
 - name: Clone language-model-server git repository.
-  git: repo=https://github.com/ronocdh/language-model-server dest={{lmserver_dir}}
+  git:
+    repo: https://github.com/ronocdh/language-model-server.git
+    dest: "{{lmserver_dir}}"
   sudo: false
 
 - name: Ensure fixtures directories exist.
@@ -11,6 +30,6 @@
 
 - name: Install Python package dependencies.
   pip: requirements={{lmserver_dir}}/requirements.txt extra_args='--upgrade'
-
-- tags:
+  tags:
     - packages
+
