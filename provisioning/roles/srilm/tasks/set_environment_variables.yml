@@ -8,7 +8,7 @@
     state=present
     line="{{item}}"
   with_items:
-    - SRILM='{{srilm_dir}}'
+    - SRILM='{{ srilm_path }}'
     - SWIGSRILM='{{ swig_srilm }}'
 
   tags:
