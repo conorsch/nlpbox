@@ -1,0 +1,20 @@
+---
+- name: Install package dependencies.
+  apt: >
+    pkg={{item}}
+    state=installed
+    update-cache=true
+  with_items:
+    - git
+    - build-essential
+    - python-pip
+    - python-dev
+    - libyaml-dev
+  tags:
+    - packages
+
+- name: Install nltk via pip.
+  pip: name=nltk extra_args='--upgrade'
+  tags:
+    - packages
+
