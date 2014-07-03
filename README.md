@@ -7,13 +7,26 @@ the [swig-srilm] project to provide Python bindings to the SRILM C code.
 
 Requirements
 ------------
- - [vagrant]
- - [VirtualBox]
+ - [vagrant] ([VirtualBox])
+ - [Ansible]
 
-Usage
+Installation
 -----
 
-From the root of the repository, simply run: 
+To install ansible:
+
+```sudo pip install ansible```
+
+Then add this block to your `~/.ssh/config`:
+
+```
+# Necessary for ansible/vagrant provisioning
+Host 127.0.0.1 localhost
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
+```
+
+Then, inside the repository, run: 
 
 ```vagrant up```
 
@@ -24,7 +37,11 @@ Doing so will run the following automated processes:
   3. Compile and install the SRILM toolkit.
   4. Compile Python bindings for SRILM, using [swig-srilm].
   5. Install the `srilm` Python package, so you can `import srilm` in your Python scripts.
-  6. Deploy the Python web application [language-model-server] for querying ngrams.
+  6. Download all NLTK corpora.
+  7. Deploy the Python web application [language-model-server] for querying ngrams.
+
+Usage
+-----
 
 You can log into the machine using:
 
@@ -51,3 +68,4 @@ srilm.getBigramProb    srilm.getIndexForWord  srilm.getTrigramProb   srilm.getWo
 [swig-srilm]:https://github.com/desilinguist/swig-srilm
 [language-model-server]:https://github.com/ronocdh/language-model-server
 [iPython]:http://ipython.org/
+[Ansible]:http://www.ansible.com/
