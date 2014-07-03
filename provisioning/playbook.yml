@@ -14,8 +14,8 @@
     - vars/nltk.yml
 
   roles:
+    - { role: ronocdh-env }
     - { role: nltk }
-#    - { role: ronocdh-env }
-#    - { role: srilm }
-#    - { role: lmserver }
+    - { role: srilm }
+    - { role: lmserver }
 
