@@ -15,16 +15,7 @@ Installation
 
 To install ansible:
 
-```sudo pip install ansible```
-
-Then add this block to your `~/.ssh/config`:
-
-```
-# Necessary for ansible/vagrant provisioning
-Host 127.0.0.1 localhost
-    StrictHostKeyChecking no
-    UserKnownHostsFile=/dev/null
-```
+```sudo pip install ansible --upgrade```
 
 Then, inside the repository, run: 
 
