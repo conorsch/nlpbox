@@ -11,6 +11,7 @@
     - python-pip
     - libyaml-dev
     - swig
+    - libz-dev
   tags:
     - srilm
     - packages
