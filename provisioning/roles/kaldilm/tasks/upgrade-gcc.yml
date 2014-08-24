@@ -23,7 +23,7 @@
     - cpp
 
 - name: Create symlinks to new gcc binaries.
-  command: ln -s /usr/bin/{{item}}-4.9 {{item}}
+  command: ln -s /usr/bin/{{item}}-4.9 /usr/bin/{{item}}
   with_items:
     - gcc
     - g++
