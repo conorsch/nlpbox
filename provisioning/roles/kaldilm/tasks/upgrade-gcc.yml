@@ -14,3 +14,18 @@
     - gcc-4.9 
     - g++-4.9 
     - cpp-4.9
+
+- name: Remove existing symlinks to gcc binaries.
+  command: rm /usr/bin/{{item}}
+  with_items:
+    - gcc
+    - g++
+    - cpp
+
+- name: Create symlinks to new gcc binaries.
+  command: ln -s /usr/bin/{{item}}-4.9 {{item}}
+  with_items:
+    - gcc
+    - g++
+    - cpp
+
