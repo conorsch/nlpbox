@@ -12,6 +12,7 @@
   vars_files:
     - vars/srilm.yml
     - vars/nltk.yml
+    - vars/kaldilm.yml
 
   roles:
     - { role: kaldilm }
