@@ -18,18 +18,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #
 
   config.vm.provider :virtualbox do |vb, override|
-    vb.customize ["modifyvm", :id, "--memory", "1024"]
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
     vb.customize ["modifyvm", :id, "--cpus", "2"]
     vb.name = "srilmbox"
   end
 
-  config.vm.synced_folder "../language-model-server", "/home/vagrant/gits/lmserver"
-  
-  config.vm.provision :shell, :inline => "locale-gen en_US.UTF-8"
-  config.vm.provision :shell, :path => "provisioning/scripts/install_dependencies.sh"
-  config.vm.provision :shell, :path => "provisioning/scripts/set_env_vars.sh"
-  config.vm.provision :shell, :path => "provisioning/scripts/compile_srilm.sh"
-  config.vm.provision :shell, :path => "provisioning/scripts/compile_swig_srilm.sh"
-  config.vm.provision :shell, :path => "provisioning/scripts/personalize_env.sh"
-  config.vm.provision :shell, :path => "provisioning/scripts/deploy_lm_server.sh"
+#  config.vm.synced_folder "../language-model-server", "/home/vagrant/gits/lmserver"
+
+  config.vm.provision :ansible do |ansible|
+    ansible.playbook = "provisioning/playbook.yml"
+    ansible.sudo = true
+    ansible.inventory_path = "provisioning/ansible_hosts"
+    ansible.verbose = "extra"
+  end
+
+#  config.vm.provision :shell, :path => "provisioning/scripts/deploy_lm_server.sh"
 end

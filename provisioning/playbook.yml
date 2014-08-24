@@ -1,0 +1,21 @@
+---
+- hosts: srilmbox
+  vars:
+    git_directory: /home/vagrant/gits
+    lmserver_dir: "{{ git_directory }}/language-model-server"
+
+  tasks:
+    - name: generate locale
+      command: locale-gen en_US.UTF-8
+      sudo: yes
+
+  vars_files:
+    - vars/srilm.yml
+    - vars/nltk.yml
+
+  roles:
+    - { role: ronocdh-env }
+    - { role: nltk }
+    - { role: srilm }
+    - { role: lmserver }
+

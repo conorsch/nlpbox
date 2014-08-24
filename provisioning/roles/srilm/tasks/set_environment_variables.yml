@@ -1,0 +1,15 @@
+---
+- name: SRILM | Environment | Update PATH to include SRILM binaries.
+  template: src=../templates/srilmpath.sh dest=/etc/profile.d/srilmpath.sh
+
+- name: SRILM | Environment | Add SRILM directories as environment variables.
+  lineinfile:
+    dest=/etc/environment
+    state=present
+    line="{{item}}"
+  with_items:
+    - SRILM='{{ srilm_path }}'
+    - SWIGSRILM='{{ swig_srilm }}'
+
+  tags:
+    - env

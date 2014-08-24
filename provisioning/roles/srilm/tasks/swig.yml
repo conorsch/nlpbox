@@ -1,0 +1,27 @@
+---
+- name: SWIG | Clone swig-srilm git repository.
+  git:
+    repo: https://github.com/desilinguist/swig-srilm 
+    dest: "{{swig_srilm}}"
+
+- name: SWIG | Register abbreviated architecture as variable.
+  shell: uname -m
+  register: uname_m
+
+- name: SWIG | Update library includes in Makefile.
+  lineinfile: >
+    dest={{swig_srilm}}/Makefile
+    state=present
+    regexp="{{item.regexp}}"
+    line="{{item.line}}"
+  with_items:
+    - { regexp: '^SRILM_LIBS=', line: "SRILM_LIBS={{srilm_path}}/lib/{{uname_m.stdout}}" }
+    - { regexp: '^SRILM_INC=', line: "SRILM_INC={{srilm_path}}/include" }
+    - { regexp: '^PYTHON_INC=', line: "PYTHON_INC=/usr/include/python2.7" }
+
+- name: SWIG | Compile.
+  command: make -C {{swig_srilm}} python
+
+- name: SWIG | Install 'srilm' Python module.
+  command: cp {{swig_srilm}}/_srilm.so {{swig_srilm}}/srilm.py /usr/lib/python2.7
+

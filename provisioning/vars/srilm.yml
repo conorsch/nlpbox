@@ -1,0 +1,4 @@
+---
+srilm_path: "/opt/srilm"
+swig_srilm: "/opt/swig-srilm"
+
