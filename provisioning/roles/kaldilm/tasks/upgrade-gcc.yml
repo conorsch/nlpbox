@@ -16,7 +16,7 @@
     - cpp-4.9
 
 - name: Remove existing symlinks to gcc binaries.
-  command: rm /usr/bin/{{item}}
+  command: rm -f /usr/bin/{{item}}
   with_items:
     - gcc
     - g++

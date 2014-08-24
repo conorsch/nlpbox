@@ -9,4 +9,7 @@
   command: make -C {{ kaldilm_path }}/tools
 
 - name: Configure source.
-  command: ./configure chdir={{ kaldilm_path}}/src
+  command: ./configure chdir={{ kaldilm_path }}/src
+
+- name: Build.
+  command: make -C {{ kaldilm_path }}/src
