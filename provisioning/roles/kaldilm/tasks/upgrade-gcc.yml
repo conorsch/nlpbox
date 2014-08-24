@@ -1,0 +1,16 @@
+---
+- name: Add PPA for GCC 9+.
+  command: add-apt-repository -y ppa:ubuntu-toolchain-r/test
+
+- name: Update apt sources.
+  command: apt-get update
+
+- name: Install GCC 9.
+  apt: >
+    pkg={{item}}
+    state=installed
+    update-cache=yes
+  with_items:
+    - gcc-4.9 
+    - g++-4.9 
+    - cpp-4.9
