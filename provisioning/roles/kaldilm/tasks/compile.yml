@@ -6,5 +6,5 @@
   command: svn co https://kaldi.svn.sourceforge.net/svnroot/kaldi/trunk {{ kaldilm_path }}
 
 - name: Compile.
-  command: make -C {{ kaldilm_path }}
+  command: make -C {{ kaldilm_path }}/tools
 

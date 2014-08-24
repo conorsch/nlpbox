@@ -10,6 +10,8 @@
     - autoconf
     - automake 
     - libtool
+    - libatlas-dev
+    - libatlas-base-dev
   tags:
     - kaldilm
     - packages
