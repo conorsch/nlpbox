@@ -10,6 +10,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Canonical builds nightly Vagrant images for Ubuntu: http://cloud-images.ubuntu.com/vagrant/
+  #  config.vm.box = "trusty64"
+  #  config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
   config.vm.box = "trusty32"
   config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-i386-vagrant-disk1.box"
 
