@@ -1,4 +1,7 @@
 ---
+- name: Force /bin/sh -> /bin/bash
+  command: ln -s -f bash /bin/sh
+
 - name: Ensure Kaldi LM  directory exists.
   file: path={{ kaldilm_path }} state=directory owner=root group=root mode=755
 
@@ -13,3 +16,5 @@
 
 - name: Build.
   command: make -C {{ kaldilm_path }}/src
+
+

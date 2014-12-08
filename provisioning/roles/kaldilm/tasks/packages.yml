@@ -12,6 +12,7 @@
     - libtool
     - libatlas-dev
     - libatlas-base-dev
+    - zlib1g-dev
   tags:
     - kaldilm
     - packages
