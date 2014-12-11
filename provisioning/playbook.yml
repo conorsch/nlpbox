@@ -1,5 +1,5 @@
 ---
-- hosts: srilmbox
+- hosts: nlpbox
   vars:
     git_directory: /home/vagrant/gits
     lmserver_dir: "{{ git_directory }}/language-model-server"
