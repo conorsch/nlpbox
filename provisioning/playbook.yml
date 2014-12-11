@@ -12,10 +12,12 @@
   vars_files:
     - vars/srilm.yml
     - vars/nltk.yml
+    - vars/kaldilm.yml
 
   roles:
-    - { role: ronocdh-env }
-    - { role: nltk }
-    - { role: srilm }
-    - { role: lmserver }
+    - { role: kaldilm }
+#    - { role: ronocdh-env }
+#    - { role: nltk }
+#    - { role: srilm }
+#    - { role: lmserver }
 

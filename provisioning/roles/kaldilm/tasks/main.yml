@@ -1,0 +1,4 @@
+---
+- include: packages.yml
+- include: upgrade-gcc.yml
+- include: compile.yml
