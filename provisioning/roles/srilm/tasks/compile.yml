@@ -32,7 +32,7 @@
     dest={{srilm_path}}/common/Makefile.machine.i686-m64
     state=present
     regexp='^\s+ADDITIONAL_CXXFLAGS ='
-    line="   ADDITIONAL_CFXXLAGS = -fPIC"
+    line="   ADDITIONAL_CXXFLAGS = -fPIC"
   tags:
     - srilm
 
