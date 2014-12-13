@@ -8,8 +8,8 @@
 
 
 - name: SWIG | Register abbreviated architecture as variable.
-  shell: uname -m
-  register: uname_m
+  shell: "{{srilm_path}}/sbin/machine-type"
+  register: srilm_architecture
   tags:
     - srilm
 
@@ -20,7 +20,7 @@
     regexp="{{item.regexp}}"
     line="{{item.line}}"
   with_items:
-    - { regexp: '^SRILM_LIBS=', line: "SRILM_LIBS={{srilm_path}}/lib/{{uname_m.stdout}}" }
+    - { regexp: '^SRILM_LIBS=', line: "SRILM_LIBS={{srilm_path}}/lib/{{srilm_architecture.stdout}}" }
     - { regexp: '^SRILM_INC=', line: "SRILM_INC={{srilm_path}}/include" }
     - { regexp: '^PYTHON_INC=', line: "PYTHON_INC=/usr/include/python2.7" }
   tags:

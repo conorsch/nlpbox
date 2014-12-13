@@ -18,6 +18,24 @@
   tags:
     - srilm
 
+- name: Compilation | Update CFLAGS linking options -fPIC
+  lineinfile: >
+    dest={{srilm_path}}/common/Makefile.machine.i686-m64
+    state=present
+    regexp='^\s+ADDITIONAL_CFLAGS ='
+    line="   ADDITIONAL_CFLAGS = -fPIC"
+  tags:
+    - srilm
+
+- name: Compilation | Update CXXFLAGS linking options -fPIC
+  lineinfile: >
+    dest={{srilm_path}}/common/Makefile.machine.i686-m64
+    state=present
+    regexp='^\s+ADDITIONAL_CXXFLAGS ='
+    line="   ADDITIONAL_CFXXLAGS = -fPIC"
+  tags:
+    - srilm
+
 - name: Compilation | make
   command: make -C {{ srilm_path }}
   environment:
