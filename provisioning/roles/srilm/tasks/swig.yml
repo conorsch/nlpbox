@@ -3,10 +3,15 @@
   git:
     repo: https://github.com/desilinguist/swig-srilm 
     dest: "{{swig_srilm}}"
+  tags:
+    - srilm
+
 
 - name: SWIG | Register abbreviated architecture as variable.
   shell: uname -m
   register: uname_m
+  tags:
+    - srilm
 
 - name: SWIG | Update library includes in Makefile.
   lineinfile: >
@@ -18,10 +23,16 @@
     - { regexp: '^SRILM_LIBS=', line: "SRILM_LIBS={{srilm_path}}/lib/{{uname_m.stdout}}" }
     - { regexp: '^SRILM_INC=', line: "SRILM_INC={{srilm_path}}/include" }
     - { regexp: '^PYTHON_INC=', line: "PYTHON_INC=/usr/include/python2.7" }
+  tags:
+    - srilm
 
 - name: SWIG | Compile.
   command: make -C {{swig_srilm}} python
+  tags:
+    - srilm
 
 - name: SWIG | Install 'srilm' Python module.
   command: cp {{swig_srilm}}/_srilm.so {{swig_srilm}}/srilm.py /usr/lib/python2.7
+  tags:
+    - srilm
 

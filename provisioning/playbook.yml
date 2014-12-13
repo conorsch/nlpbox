@@ -15,9 +15,9 @@
     - vars/kaldilm.yml
 
   roles:
-    - { role: kaldilm }
 #    - { role: ronocdh-env }
-#    - { role: nltk }
-#    - { role: srilm }
+    - { role: nltk }
+    - { role: srilm }
+    - { role: kaldilm }
 #    - { role: lmserver }
 

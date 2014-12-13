@@ -1,21 +1,51 @@
 ---
-- name: SRILM | Compilation | Ensure SRILM directory exists.
+- name: Compilation | Ensure SRILM directory exists.
   file: path={{ srilm_path }} state=directory owner=root group=root mode=755
+  tags:
+    - srilm
 
-- name: SRILM | Compilation | Extract SRILM tarball.
+- name: Compilation | Extract SRILM tarball.
   command: tar -xz --directory {{ srilm_path }} -f /vagrant/provisioning/srilm.tgz
+  tags:
+    - srilm
 
-- name: SRILM | Compilation | Update PATH in Makefile.
+- name: Compilation | Update PATH in Makefile.
   lineinfile: >
     dest={{srilm_path}}/Makefile
     state=present
     regexp='^#\s+(SRILM = )/home/speech/stolcke/project/srilm/devel'
     line="SRILM={{srilm_path}}"
+  tags:
+    - srilm
 
-- name: SRILM | Compilation | Compile.
+- name: Compilation | make
   command: make -C {{ srilm_path }}
   environment:
     NO_TCL: 'X'
     TCL_INCLUDE: ''
     TCL_LIBRARY: ''
+    LD_LIBRARY_PATH: '/opt/srilm/lib/i686-m64'
+  tags:
+    - srilm
+    - compile
 
+- name: Compilation | make World
+  command: make -C {{ srilm_path }} World
+  environment:
+    NO_TCL: 'X'
+    TCL_INCLUDE: ''
+    TCL_LIBRARY: ''
+    LD_LIBRARY_PATH: '/opt/srilm/lib/i686-m64'
+  tags:
+    - srilm
+
+- name: Compilation | make test
+  command: make -C {{ srilm_path }} test
+  environment:
+    NO_TCL: 'X'
+    TCL_INCLUDE: ''
+    TCL_LIBRARY: ''
+    LD_LIBRARY_PATH: '/opt/srilm/lib/i686-m64'
+  tags:
+    - srilm
+    - compile
