@@ -10,7 +10,6 @@
   with_items:
     - SRILM='{{ srilm_path }}'
     - SWIGSRILM='{{ swig_srilm }}'
-
   tags:
     - env
     - srilm
