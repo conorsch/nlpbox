@@ -31,7 +31,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.playbook = "provisioning/playbook.yml"
     ansible.sudo = true
     ansible.inventory_path = "provisioning/ansible_hosts"
-    ansible.tags = ["srilm", "compile"]
     ansible.skip_tags = ["test"]
     ansible.verbose = "extra"
   end
