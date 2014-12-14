@@ -14,7 +14,16 @@
 - name: Configure source.
   command: ./configure chdir={{ kaldilm_path }}/src
 
-- name: Build.
+- name: make
   command: make -C {{ kaldilm_path }}/src
 
+- name: make rrnlm
+  command: make -C {{ kaldilm_path }}/tools/rnnlm-hs-0.1b
+  tags:
+      - rnnlm
+
+- name: Update PATH to include rrnlm binary
+  template: src=../templates/kaldilmpath.sh dest=/etc/profile.d/kaldilmpath.sh
+  tags:
+      - rnnlm
 
