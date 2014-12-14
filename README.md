@@ -1,7 +1,14 @@
-srilmbox
+nlpbox
 ========
 
-A [Vagrant] environment leveraging the [SRILM] toolkit. 
+A [Vagrant] environment providing a variety of NLP toolkits, 
+  including: 
+  
+* [NLTK]
+* [SRILM]
+* [kaldi]
+* [RNNLM]
+
 This project is inspired by ([Madnani, 2009]), particularly 
 the [swig-srilm] project to provide Python bindings to the SRILM C code.
 
@@ -20,16 +27,6 @@ To install ansible:
 Then, inside the repository, run: 
 
 ```vagrant up```
-
-Doing so will run the following automated processes:
-
-  1. Create a virtual machine (VM) running Ubuntu 14.04 LTS 32-bit.
-  2. Install development packages for compiling projects from source.
-  3. Compile and install the SRILM toolkit.
-  4. Compile Python bindings for SRILM, using [swig-srilm].
-  5. Install the `srilm` Python package, so you can `import srilm` in your Python scripts.
-  6. Download all NLTK corpora.
-  7. Deploy the Python web application [language-model-server] for querying ngrams.
 
 Usage
 -----
@@ -60,3 +57,6 @@ srilm.getBigramProb    srilm.getIndexForWord  srilm.getTrigramProb   srilm.getWo
 [language-model-server]:https://github.com/ronocdh/language-model-server
 [iPython]:http://ipython.org/
 [Ansible]:http://www.ansible.com/
+[kaldi]:http://kaldi.sourceforge.net/about.html
+[RNNLM]:http://rnnlm.org/
+[NLTK]:http://www.nltk.org/

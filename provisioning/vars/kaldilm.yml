@@ -1,3 +1,4 @@
 ---
 kaldilm_path: "/opt/kaldilm"
+rnnlm_path: "{{kaldilm_path}}/tools/rnnlm-hs-0.1b"
 

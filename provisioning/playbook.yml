@@ -1,5 +1,5 @@
 ---
-- hosts: srilmbox
+- hosts: nlpbox
   vars:
     git_directory: /home/vagrant/gits
     lmserver_dir: "{{ git_directory }}/language-model-server"
@@ -15,9 +15,9 @@
     - vars/kaldilm.yml
 
   roles:
-    - { role: kaldilm }
-#    - { role: ronocdh-env }
-#    - { role: nltk }
-#    - { role: srilm }
+    - { role: nltk, tags: ['nltk'] }
+    - { role: srilm, tags: ['srilm'] }
+    - { role: kaldilm, tags: ['kaldilm'] }
 #    - { role: lmserver }
+#    - { role: ronocdh-env }
 

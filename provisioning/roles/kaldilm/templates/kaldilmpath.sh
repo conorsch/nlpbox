@@ -1,2 +1,2 @@
-PATH="{{kaldilm_path}}/bin:$PATH"
+PATH="{{rnnlm_path}}:$PATH"
 export PATH
